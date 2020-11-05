@@ -1,0 +1,28 @@
+{
+  "name": "@jinyaoma/yao-ui",
+  "private": true,
+  "version": "0.0.1-20201105.1307",
+  "description": "",
+  "author": {
+    "name": "jinyaoMa",
+    "email": "jinyao.ma@outlook.com",
+    "url": "https://github.com/jinyaoMa"
+  },
+  "main": "lib/yao-ui.umd.min.js",
+  "scripts": {
+    "icons": "node icons/generate.js && webpack --config icons/webpack.config.js",
+    "packages": "vue-cli-service build --target lib --name yao-ui --dest lib packages/index.js",
+    "vuepress:dev": "vuepress dev docs",
+    "vuepress:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "vuepress": "^1.7.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "font-carrier": "^0.2.0",
+    "mini-css-extract-plugin": "^1.2.1",
+    "webpack-cli": "^4.1.0"
+  }
+}

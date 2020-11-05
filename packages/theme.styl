@@ -1,0 +1,57 @@
+:root
+  // Functional Colors
+  $YuiColorBrand = #3399ff
+  $YuiColorSuccess = #66cc33
+  $YuiColorWarning = #ff9933
+  $YuiColorDanger = #ff6666
+  $YuiColorInfo = #999999
+  --yui-color-brand $YuiColorBrand
+  --yui-color-success $YuiColorSuccess
+  --yui-color-warning $YuiColorWarning
+  --yui-color-danger $YuiColorDanger
+  --yui-color-info $YuiColorInfo
+  for i in 1 .. 9
+    --yui-color-brand-{i} lighten($YuiColorBrand, i * 10%)
+    --yui-color-success-{i} lighten($YuiColorSuccess, i * 10%)
+    --yui-color-warning-{i} lighten($YuiColorWarning, i * 10%)
+    --yui-color-danger-{i} lighten($YuiColorDanger, i * 10%)
+    --yui-color-info-{i} lighten($YuiColorInfo, i * 10%)
+  // Background Colors
+  --yui-color-white #ffffff
+  --yui-color-black #000000
+  --yui-color-background #f5f7fa
+  // Font Colors
+  --yui-color-font-primary #333333
+  --yui-color-font-regular #666666
+  --yui-color-font-secondary #999999
+  --yui-color-font-placeholder #cccccc
+  // Border Colors
+  --yui-color-border-base #dcdfe6
+  --yui-color-border-light #e4e7ed
+  --yui-color-border-lighter #ebeef5
+  --yui-color-border-lightest #f2f6fc
+  // Border Width
+  --yui-border-width-solid 1px
+  --yui-border-width-dashed 2px
+  // Border Radius
+  --yui-border-radius-none 0
+  --yui-border-radius-small 2px
+  --yui-border-radius-large 4px
+  for i in 1 .. 3
+    j = i * 10
+    --yui-border-radius-{j} unit(j, px)
+  // Box Shadows
+  --yui-box-shadow-base 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04)
+  --yui-box-shadow-light 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+  // Typography
+  --yui-font-size-smaller 12px
+  --yui-font-size-small 13px
+  --yui-font-size-base 14px
+  --yui-font-size-medium 16px
+  --yui-font-size-large 18px
+  --yui-font-size-larger 20px
+  --yui-line-height-none 1
+  --yui-line-height-tight 1.3
+  --yui-line-height-regular 1.5
+  --yui-line-height-lax 1.7
+  font-family 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'SimSun', sans-serif
