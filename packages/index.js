@@ -1,4 +1,3 @@
-import "../icons/dist/yui-icon.css";
 import "./theme.styl";
 import Container from "./container";
 import Header from "./header";

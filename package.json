@@ -10,8 +10,8 @@
   },
   "main": "lib/yao-ui.umd.min.js",
   "scripts": {
-    "icons": "node icons/generate.js && webpack --config icons/webpack.config.js",
-    "packages": "vue-cli-service build --target lib --name yao-ui --dest lib packages/index.js",
+    "icons": "node icons/generate.js && vue-cli-service build --target lib --name yui-icon --dest lib/icons icons/index.js",
+    "packages": "vue-cli-service build --target lib --name yao-ui --dest lib/packages packages/index.js",
     "vuepress:dev": "vuepress dev docs",
     "vuepress:build": "vuepress build docs"
   },
@@ -22,7 +22,6 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "font-carrier": "^0.2.0",
-    "mini-css-extract-plugin": "^1.2.1",
-    "webpack-cli": "^4.1.0"
+    "mini-css-extract-plugin": "^1.2.1"
   }
 }

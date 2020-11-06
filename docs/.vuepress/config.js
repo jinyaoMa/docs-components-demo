@@ -1,4 +1,4 @@
-const secret = require("./_secret");
+//const secret = require("./_secret");
 
 module.exports = {
   // https://www.vuepress.cn/zh/config/
@@ -13,8 +13,8 @@ module.exports = {
 
   themeConfig: {
     domain: "https://ma-jinyao.cn", // for sitemap generate
-    translate: secret.translate, // baidu translation
-    comment: secret.comment, // vssue setting
+    //translate: secret.translate, // baidu translation
+    //comment: secret.comment, // vssue setting
     // clustrmaps setting
     clustrmaps: {
       id: "clustrmaps", // clstr_globe / clustrmaps
