@@ -1,15 +1,25 @@
 <template>
-  <yui-container class="GlobalLayout">
-    <component :is="layout" />
-  </yui-container>
+  <div
+    class="GlobalLayout container"
+    :class="{ isNight: yui$IsNight }"
+    :style="customStyleBackgroundImage"
+  >
+    <Drawer :customStyleBackgroundImage="customStyleBackgroundImage"></Drawer>
+    <Content>
+      <component :is="layout" :style="{ height: '200vh' }" />
+    </Content>
+  </div>
 </template>
 
 <script>
+import Drawer from "../components/Drawer";
+import Content from "../components/Content";
+
 export default {
   name: "GlobalLayout",
-  components: {},
-  data() {
-    return {};
+  components: {
+    Drawer,
+    Content,
   },
   computed: {
     layout() {
@@ -26,8 +36,33 @@ export default {
       }
       return "NotFound";
     },
+    customStyleBackgroundImage() {
+      let backgroundImage = "none";
+      if (
+        this.$themeConfig.backgrounds &&
+        this.$themeConfig.backgrounds.length
+      ) {
+        const index = Math.floor(
+          Math.random() * this.$themeConfig.backgrounds.length
+        );
+        backgroundImage = `url('${this.$themeConfig.backgrounds[index]}')`;
+      }
+      return {
+        backgroundImage,
+      };
+    },
   },
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+.GlobalLayout
+  height 100vh
+  background-position center center
+  background-attachment fixed
+  background-repeat no-repeat
+  background-size cover
+  user-select none
+  &.isNight
+    filter brightness(50%)
+</style>

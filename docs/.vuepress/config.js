@@ -7,12 +7,68 @@ module.exports = {
 
   base: "/",
 
-  title: "耀 | YAO",
+  title: "耀 | jinyaoMa",
 
   description: "",
 
   themeConfig: {
+    backgrounds: [
+      // "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596065328389&di=ad7a9cc49e45547721005bd528325f0d&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2%2F58b4ef69ed377.jpg",
+      // "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596063652971&di=8b659ee5cd46f4006d082b626eb3bd0d&imgtype=0&src=http%3A%2F%2Fpicture.ik123.com%2Fuploads%2Fallimg%2F180330%2F4-1P330160644.jpg",
+      "http://api.btstu.cn/sjbz/?lx=dongman"
+    ],
+    avatar: "/img/avatar.png",
+    author: {
+      zh: "耀",
+      en: "jinyaoMa"
+    },
+    menus: [
+      {
+        text: {
+          zh: "博客",
+          en: "Blog"
+        },
+        icon: '<i class="fas fa-blog fa-fw"></i>',
+        items: [
+          {
+            text: {
+              zh: "首页",
+              en: "Home"
+            },
+            link: "/"
+          },
+          {
+            text: {
+              zh: "归档",
+              en: "Archive"
+            },
+            link: "/archive/"
+          },
+          {
+            text: {
+              zh: "关于",
+              en: "About"
+            },
+            link: "/about/"
+          }
+        ]
+      }
+    ],
+    music: `https://api.i-meto.com/meting/api?server=netease&type=playlist&id=4989572738&r=${Math.random()}`,
+    copyright: `© 2019 - ${new Date().getFullYear()} jinyaoMa`,
     domain: "https://ma-jinyao.cn", // for sitemap generate
+    dateFormatter: (time) => {
+      // for sitemap dateFormatter used
+      const regexAM = /├\w\d\d: AM┤/;
+      const regexPM = /├\w\d\d: PM┤/;
+      return new Date(
+        time.replace(regexAM, "AM").replace(regexPM, "PM")
+      ).toISOString();
+    },
+
+    //
+    //
+    //
     //translate: secret.translate, // baidu translation
     //comment: secret.comment, // vssue setting
     // clustrmaps setting
@@ -21,7 +77,6 @@ module.exports = {
       src:
         "//cdn.clustrmaps.com/map_v2.js?cl=333333&w=a&t=t&d=kuCCiVvtASTqmAMxPSTLcjxs-p8j6ht3LUi9z9Q-OKc&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=333333"
     },
-    author: "jinyaoMa",
     year: 2019, // year of site started
     maximizeLaunch: false, // full size image for launch
     noEmpty: false, // hide empty component
@@ -40,14 +95,6 @@ module.exports = {
       empty: "/assets/img/empty.png",
       records: "/assets/img/records.png",
       background: "/assets/img/background.png"
-    },
-    dateFormatter: (time) => {
-      // for sitemap dateFormatter used
-      const regexAM = /├\w\d\d: AM┤/;
-      const regexPM = /├\w\d\d: PM┤/;
-      return new Date(
-        time.replace(regexAM, "AM").replace(regexPM, "PM")
-      ).toISOString();
     },
     customBackgrounds: [
       //'/assets/img/background.png',
@@ -144,89 +191,6 @@ module.exports = {
         }
       ]
     },
-    menus: [
-      {
-        caption: [
-          "菜单", // zh
-          "MENU" // en
-        ],
-        icon: '<i class="fas fa-sitemap fa-fw"></i>',
-        items: [
-          {
-            icon: '<i class="fas fa-home fa-fw"></i>',
-            text: [
-              "首页", // zh
-              "Home" // en
-            ],
-            link: "/"
-          },
-          {
-            icon: '<i class="fas fa-archive fa-fw"></i>',
-            text: [
-              "归档", // zh
-              "Archive" // en
-            ],
-            link: "/archive/"
-          },
-          {
-            icon: '<i class="fas fa-box fa-fw"></i>',
-            text: [
-              "代码库", // zh
-              "Code Library" // en
-            ],
-            link: "/codes/"
-          },
-          {
-            icon: '<i class="fas fa-icons fa-fw"></i>',
-            text: [
-              "图标字体库", // zh
-              "Icon Font Library" // en
-            ],
-            link: "/icons/"
-          },
-          {
-            icon: '<i class="fas fa-edit fa-fw"></i>',
-            text: [
-              "记录", // zh
-              "Records" // en
-            ],
-            link: "/records/"
-          },
-          {
-            icon: '<i class="fas fa-images fa-fw"></i>',
-            text: [
-              "图库", // zh
-              "Gallery" // en
-            ],
-            link: "/gallery/"
-          },
-          {
-            icon: '<i class="fas fa-paper-plane fa-fw"></i>',
-            text: [
-              "简历小贴士", // zh
-              "Resume Tips" // en
-            ],
-            link: "/resume/"
-          },
-          {
-            icon: '<i class="fas fa-file-contract fa-fw"></i>',
-            text: [
-              "求职信小贴士", // zh
-              "Cover Letter Tips" // en
-            ],
-            link: "/letter/"
-          },
-          {
-            icon: '<i class="fas fa-user fa-fw"></i>',
-            text: [
-              "关于", // zh
-              "About" // en
-            ],
-            link: "/about/"
-          }
-        ]
-      }
-    ],
     meting: {
       server: "netease", // netease, tencent, kugou, xiami, baidu
       type: "playlist", // song, playlist, album, search, artist
