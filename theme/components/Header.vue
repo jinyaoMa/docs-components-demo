@@ -13,15 +13,20 @@
           <i v-if="isPlayed" class="fas fa-pause"></i>
         </div>
       </div>
+      <SearchBox class="Search"></SearchBox>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import SearchBox from "@vuepress/plugin-search/SearchBox";
 
 export default {
   name: "Header",
+  components: {
+    SearchBox,
+  },
   mounted() {
     this.initAudio();
   },
@@ -118,6 +123,7 @@ export default {
 
 .Content
   flex-direction row-reverse
+  justify-content space-between
 
 .Audio
   height $avatarSize
@@ -134,6 +140,7 @@ export default {
   &:hover
     opacity 1
   &.isPlayed
+    opacity 1
     .Audio-cover
       animation spin 6s linear infinite
 
@@ -143,11 +150,43 @@ export default {
   background-position center center
   background-repeat no-repeat
   background-size cover
-  background-color $backgroundTransparentDarkOver
+  background-color $backgroundTransparentDarkSecondary
   position absolute
 
 .Audio-icon
   position relative
   color $fontColorBlack
   text-shadow -1px 1px $backgroundTransparentLight
+  background-color $dividerColorLight
+
+>>> .Search
+  $searchWidth = $minPageWidth - $sideWidth - $padding * 4
+  input
+    width $searchWidth * 0.25
+    height $avatarSize
+    padding-left s(
+      'calc(%s - 0.5rem)',
+      @height
+    )
+    padding-right $avatarSize * 0.25
+    border-radius $avatarSize * 0.5
+    background-color $backgroundTransparentLightSecondary
+    background-position s(
+      'calc(%s - 0.5rem)',
+      $avatarSize * 0.5
+    ) s(
+      'calc(%s - 0.5rem)',
+      $avatarSize * 0.5
+    )
+    border-width 0
+    &:focus
+      width $searchWidth * 0.5
+      background-color $fontColorWhite
+      box-shadow 0 0 0 1px darken($borderColor, 10%)
+  .suggestions
+    width $searchWidth
+    top $avatarSize + $gap
+    left 0
+  a
+    text-decoration none
 </style>

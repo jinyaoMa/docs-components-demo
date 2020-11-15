@@ -19,7 +19,9 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@vuepress/plugin-blog": "^1.9.3",
     "axios": "^0.21.0",
+    "markdown-it-pangu": "^1.0.2",
     "vuepress": "^1.7.1",
+    "vuepress-plugin-helper-live2d": "^1.0.2",
     "vuex": "^3.5.1"
   },
   "devDependencies": {

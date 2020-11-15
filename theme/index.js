@@ -1,6 +1,9 @@
 module.exports = (themeConfig, context) => {
   const name = "vuepress-theme-yao-ui";
 
+  const zhCN = require("./locales/zh-CN");
+  const enUS = require("./locales/en-US");
+
   const plugins = [
     [
       // https://vuepress-plugin-blog.ulivz.com/
@@ -8,30 +11,40 @@ module.exports = (themeConfig, context) => {
       {
         directories: [
           {
-            id: "post",
-            title: "归档 | Archive",
+            id: "archive",
             dirname: "_posts",
             path: "/archive/",
-            pagination: {
-              lengthPerPage: Infinity
-            },
+            title: "归档 | Archive",
             layout: "Archive",
-            itemLayout: "Post"
+            frontmatter: {
+              title_zh: zhCN.archive,
+              title_en: enUS.archive
+            },
+            itemLayout: "Post",
+            itemPermalink: "/:year/:month/:day/:slug",
+            pagination: {
+              prevText: "Older",
+              nextText: "Newer",
+              lengthPerPage: 9,
+              layout: "Pagination"
+            }
           }
         ],
         frontmatters: [
           {
-            id: "tags",
-            title: "标签 | Tags",
-            keys: ["tags"],
-            path: "/tag/",
+            id: "category",
+            keys: ["category", "categories"],
+            path: "/category/",
+            title: "分类 | Categories",
+            layout: "Catagory",
             scopeLayout: "Archive"
           },
           {
-            id: "categories",
-            title: "分类 | Categories",
-            keys: ["categories"],
-            path: "/category/",
+            id: "tag",
+            keys: ["tag", "tags"],
+            path: "/tag/",
+            title: "标签 | Tags",
+            layout: "Tag",
             scopeLayout: "Archive"
           }
         ],
@@ -49,6 +62,37 @@ module.exports = (themeConfig, context) => {
           clientId: 'Your clientId',
           clientSecret: 'Your clientSecret',
         }*/
+      }
+    ],
+    [
+      // https://github.com/JoeyBling/vuepress-plugin-helper-live2d
+      "vuepress-plugin-helper-live2d",
+      {
+        log: false,
+        live2d: {
+          enable: true,
+          model: "haruto",
+          display: {
+            position: "right",
+            width: 180,
+            height: 270,
+            hOffset: 72,
+            vOffset: 40
+          },
+          mobile: {
+            show: false
+          },
+          react: {
+            opacity: 1
+          }
+        }
+      }
+    ],
+    [
+      // https://www.vuepress.cn/plugin/official/plugin-search.html
+      "@vuepress/search",
+      {
+        searchMaxSuggestions: 9
       }
     ]
   ];
@@ -77,16 +121,54 @@ module.exports = (themeConfig, context) => {
     {
       path: "/",
       frontmatter: {
-        layout: "Layout"
+        layout: "Home",
+        title: "首页 | Home"
       }
     }
   ];
+
+  const extendPageData = ($page) => {
+    const markdown_content = $page._strippedContent;
+
+    // word count
+    if (markdown_content) {
+      const zh = (markdown_content.match(/[\u4E00-\u9FA5]/g) || []).length;
+      const en = (
+        markdown_content
+          .replace(/[\u4E00-\u9FA5]/g, "")
+          .match(
+            /[a-zA-Z0-9_\u0392-\u03c9\u0400-\u04FF]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af\u0400-\u04FF]+|[\u00E4\u00C4\u00E5\u00C5\u00F6\u00D6]+|\w+/g
+          ) || []
+      ).length;
+      const min2read = zh / 150 + en / 100;
+      $page.frontmatter.wordcount = zh + en;
+      $page.frontmatter.min2read = min2read < 1 ? "1" : parseInt(min2read, 10);
+    } else {
+      $page.frontmatter.wordcount = 0;
+      $page.frontmatter.min2read = 0;
+    }
+  };
+
+  const extendMarkdown = (md) => {
+    md.use(require("markdown-it-pangu"));
+  };
+
+  const { PLUGINS } = require("@vuepress/markdown/lib/constant");
+
+  const chainMarkdown = (config) => {
+    config.plugin(PLUGINS.TOC).tap(([options]) => {
+      return [Object.assign(options, { includeLevel: [1, 2, 3, 4, 5, 6] })];
+    });
+  };
 
   return {
     name,
     plugins,
     alias,
     define,
-    additionalPages
+    additionalPages,
+    extendPageData,
+    extendMarkdown,
+    chainMarkdown
   };
 };

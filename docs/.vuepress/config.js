@@ -7,9 +7,10 @@ module.exports = {
 
   base: "/",
 
-  title: "耀 | jinyaoMa",
+  title: "耀_jinyaoMa",
 
-  description: "",
+  description:
+    "耀, Mark, jinyaoMa, 部落阁, 博客, Blog, Mustom, VuePress, 耀の个人网站, 耀的个人网站, Mark の Personal Website, Mark's Personal Website",
 
   themeConfig: {
     backgrounds: [
@@ -43,6 +44,20 @@ module.exports = {
               en: "Archive"
             },
             link: "/archive/"
+          },
+          {
+            text: {
+              zh: "分类",
+              en: "Categories"
+            },
+            link: "/category/"
+          },
+          {
+            text: {
+              zh: "标签",
+              en: "Tags"
+            },
+            link: "/tag/"
           },
           {
             text: {
@@ -334,8 +349,8 @@ module.exports = {
 
   // https://www.vuepress.cn/zh/config/#markdown
   markdown: {
-    lineNumbers: false,
-    extractHeaders: ["h1", "h2", "h3", "h4", "h5", "h6"]
+    lineNumbers: false
+    // extractHeaders: ["h1", "h2", "h3", "h4", "h5", "h6"]
   },
 
   evergreen: true, // using old browser ?

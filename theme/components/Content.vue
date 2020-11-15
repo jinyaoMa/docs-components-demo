@@ -1,12 +1,14 @@
 <template>
   <div class="Content container container--vertical">
     <Header></Header>
-    <div class="main">
-      <div class="Subpage container">
-        <slot></slot>
+    <div class="Subpage main">
+      <div class="Main container container--vertical">
+        <div class="main">
+          <slot></slot>
+        </div>
+        <Footer></Footer>
       </div>
     </div>
-    <Footer></Footer>
     <div class="Goingto container container--vertical">
       <div class="Goingto-button" @click="goingtoTop">
         <i class="fas fa-arrow-up"></i>
@@ -15,7 +17,7 @@
         <i class="fas fa-arrow-down"></i>
       </div>
     </div>
-    <div class="Scrollbar" ref="scrollbar">
+    <div class="Scrollbar" ref="scrollbar" :class="{ noScroll }">
       <div
         class="Scrollbar-thumb"
         :style="{
@@ -41,6 +43,7 @@ export default {
   methods: {
     initThumb() {
       this.thumbDistance = this.$el.scrollHeight - this.$el.offsetHeight;
+      this.noScroll = this.thumbDistance <= 0;
       this.thumbHeight =
         (this.$el.offsetHeight / this.$el.scrollHeight) *
         this.$refs.scrollbar.offsetHeight;
@@ -70,6 +73,7 @@ export default {
     return {
       onResize: null,
       onScroll: null,
+      noScroll: true,
       thumbDistance: 0,
       thumbHeight: 0,
       limitThumbTranslate: 0,
@@ -80,8 +84,22 @@ export default {
       onThumbMouseup: null,
     };
   },
+  watch: {
+    $route: {
+      handler() {
+        console.log();
+        const waiter = window.setInterval(() => {
+          if (this.$refs.scrollbar && this.$slots.default.length) {
+            this.initThumb();
+            window.clearInterval(waiter);
+          }
+        }, 600);
+      },
+      immediate: true,
+    },
+  },
   mounted() {
-    window.setTimeout(this.initThumb, 200);
+    this.initThumb();
     this.onResize = window.addEventListener("resize", this.initThumb);
     this.onScroll = this.$el.addEventListener("scroll", this.setThumbTransform);
     this.onThumbMousedown = this.$refs.thumb.addEventListener(
@@ -147,6 +165,8 @@ export default {
   right @bottom
   z-index 1
   pointer-events none
+  &.noScroll
+    opacity 0 !important
 
 .Scrollbar-thumb
   width $gap * 0.75
@@ -173,16 +193,25 @@ export default {
 .Goingto-button
   height $avatarSize
   width @height
-  margin-top $padding * 0.5
   background-color $backgroundTransparentLightOver
   text-align center
   font-size $avatarSize * 0.5
   line-height $avatarSize
   cursor pointer
   pointer-events auto
+  &:not(:first-child)
+    margin-top $padding * 0.5
   &:hover
     background-color $backgroundTransparentLight
 
 .Subpage
-  padding 0 $padding
+  padding $padding * 2 ($padding * 4 + $avatarSize)
+  padding-bottom $avatarSize + $padding * 4
+  max-width $maxMainWidth
+  margin 0 auto
+  width 100%
+
+.Main
+  height 100%
+  background-color $backgroundTransparentLightSecondary
 </style>

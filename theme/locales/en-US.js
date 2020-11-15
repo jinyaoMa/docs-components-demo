@@ -9,5 +9,7 @@ module.exports = {
     wd: "Site total word count",
     license:
       "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
-  }
+  },
+
+  archive: "Archive"
 };

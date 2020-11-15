@@ -10,12 +10,7 @@
           ></div>
         </div>
       </div>
-      <div
-        class="Menu"
-        v-for="(menu, i) in $themeConfig.menus"
-        :key="i"
-        :style="{ height: '200vh' }"
-      >
+      <div class="Menu" v-for="(menu, i) in $themeConfig.menus" :key="i">
         <div v-if="menu.items && !menu.link" class="Submenu">
           <div class="Submenu-caption">
             <span class="Menu-item-icon" v-html="menu.icon"></span>
@@ -46,7 +41,7 @@
         <i v-if="!yui$IsNight" class="fas fa-moon"></i>
       </div>
     </div>
-    <div class="Scrollbar" ref="scrollbar">
+    <div class="Scrollbar" ref="scrollbar" :class="{ noScroll }">
       <div
         class="Scrollbar-thumb"
         :style="{
@@ -78,6 +73,7 @@ export default {
   methods: {
     initThumb() {
       this.thumbDistance = this.$el.scrollHeight - this.$el.offsetHeight;
+      this.noScroll = this.thumbDistance <= 0;
       this.thumbHeight =
         (this.$el.offsetHeight / this.$el.scrollHeight) *
         this.$refs.scrollbar.offsetHeight;
@@ -95,6 +91,7 @@ export default {
     return {
       onResize: null,
       onScroll: null,
+      noScroll: true,
       thumbDistance: 0,
       thumbHeight: 0,
       limitThumbTranslate: 0,
@@ -179,6 +176,8 @@ export default {
   top @bottom
   z-index 1
   pointer-events none
+  &.noScroll
+    opacity 0 !important
 
 .Scrollbar-thumb
   width $gap * 0.75

@@ -13,6 +13,7 @@ body, html
 body
   font-family 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'SimSun', sans-serif
   color $fontColorBlack
+  background-color $fontColorBlackSecondary
   line-height 1.5
 
 .container
@@ -24,9 +25,11 @@ body
 .container--vertical
   flex-direction column
 
+.head, .aside, .foot
+  flex-shrink 0
+
 .aside
   width $sideWidth
-  flex-shrink 0
   overflow-x hidden
   overflow-y auto
 
@@ -34,9 +37,6 @@ body
   flex 1
   flex-basis auto
   padding $padding
-
-.head
-  flex-shrink 0
 
 @keyframes spin
   0%

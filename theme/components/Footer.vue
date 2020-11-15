@@ -1,22 +1,27 @@
 <template>
-  <div class="Footer container">
+  <div class="Footer foot">
     <div class="Main main">
       <div class="Copyright" v-html="$themeConfig.copyright"></div>
+      |
       <div class="Powered" v-html="powered"></div>
+      |
       <div class="Themed" v-html="themed"></div>
-      <div class="Counter">
-        <span :title="yui$Locale.footer.pv">
-          <i class="fas fa-eye fa-fw" />
-          {{ yui$Busuanzi.pv }}
-        </span>
-        <span :title="yui$Locale.footer.uv">
-          <i class="fas fa-user-tie fa-fw" />
-          {{ yui$Busuanzi.uv }}
-        </span>
-        <span :title="yui$Locale.footer.wd">
-          <i class="fas fa-file-word fa-fw" />
-        </span>
+      |
+      <div class="Counter" :title="yui$Locale.footer.pv">
+        <i class="fas fa-eye" />
+        {{ yui$Busuanzi.pv }}
       </div>
+      |
+      <div class="Counter" :title="yui$Locale.footer.uv">
+        <i class="fas fa-user-tie" />
+        {{ yui$Busuanzi.uv }}
+      </div>
+      |
+      <div class="Counter" :title="yui$Locale.footer.wd">
+        <i class="fas fa-file-word" />
+        {{ yui$SiteTotalWords }}
+      </div>
+      |
       <div class="License" v-html="license"></div>
     </div>
   </div>
@@ -56,11 +61,16 @@ export default {
 <style lang="stylus" scoped>
 .Footer
   color $fontColorBlack
+  text-align center
+  font-size 0.88em
+  border-top $gap dashed $dividerColorDark
 
-.Main > div
-  padding 0 $padding
-  &:not(:first-child):not(:last-child)
-    margin $gap 0
+.Main
+  line-height 2
+  max-width $maxMainWidth
+  margin 0 auto
+  > div
+    display inline-block
 
 >>> a
   text-decoration none
@@ -79,7 +89,7 @@ export default {
     opacity 1
 
 .License
-  height 15px
+  height $padding
   >>> a
     display inline-block
     height 15px
@@ -87,10 +97,11 @@ export default {
     background url('../statics/by-nc-sa.png')
     background-color $backgroundTransparentDarkOver
     background-size cover
+    background-repeat no-repeat
+    vertical-align text-top
     &:before
       display none
 
-.Counter > span
-  display inline-block
-  margin-right 0.1em
+.Counter i
+  font-size 0.88em
 </style>

@@ -35,7 +35,19 @@ export default (Vuex) => {
         yui$Lang: "lang",
         yui$Locale: "locale",
         yui$IsNight: "isNight"
-      })
+      }),
+      yui$SiteTotalWords() {
+        let result = 0;
+        this.$site.pages
+          .filter((p) => !!p.title)
+          .forEach((page) => {
+            result += page.frontmatter.wordcount;
+          });
+        if (result >= 1000) {
+          result = Math.round(result / 100) / 10 + "k";
+        }
+        return result;
+      }
     }
   };
 };

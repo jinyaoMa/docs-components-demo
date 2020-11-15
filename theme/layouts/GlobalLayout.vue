@@ -6,7 +6,7 @@
   >
     <Drawer :customStyleBackgroundImage="customStyleBackgroundImage"></Drawer>
     <Content>
-      <component :is="layout" :style="{ height: '200vh' }" />
+      <component :is="layout" />
     </Content>
   </div>
 </template>
@@ -20,6 +20,9 @@ export default {
   components: {
     Drawer,
     Content,
+  },
+  mounted() {
+    console.log(this);
   },
   computed: {
     layout() {
