@@ -4,7 +4,7 @@ node_modules
 _secret.js
 .npmrc
 npmuser.sh
-.vuepress/dist
+/docs/.vuepress/dist
 package-lock.json
 
 # local env files
