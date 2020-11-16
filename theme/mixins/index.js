@@ -1,4 +1,5 @@
 import jsonp from "../utils/jsonp";
+import axios from "axios";
 
 export default (Vuex) => {
   return {
@@ -7,6 +8,10 @@ export default (Vuex) => {
         yui$Busuanzi: {
           pv: "∞",
           uv: "∞"
+        },
+        yui$Hitokoto: {
+          word: "Loading...",
+          from: "Loading..."
         }
       };
     },
@@ -28,6 +33,46 @@ export default (Vuex) => {
           },
           true
         );
+      },
+      yui$InitHitokoto() {
+        let that = this;
+        if (
+          that.$themeConfig.hitokoto.customs &&
+          that.$themeConfig.hitokoto.customs.length
+        ) {
+          const rand = Math.floor(
+            Math.random() * that.$themeConfig.hitokoto.customs.length
+          );
+          that.yui$Hitokoto.word = customs[rand].word;
+          that.yui$Hitokoto.from = customs[rand].from;
+        } else {
+          axios
+            .get(that.$themeConfig.hitokoto.api, {
+              params: {
+                c: that.$themeConfig.hitokoto.type
+              }
+            })
+            .then((result) => {
+              result = result.data;
+              if (
+                typeof result.hitokoto === "string" &&
+                result.hitokoto.trim().length > 0
+              ) {
+                that.yui$Hitokoto.word = result.hitokoto.trim();
+              }
+              if (
+                typeof result.from_who === "string" &&
+                result.from_who.trim().length > 0
+              ) {
+                that.yui$Hitokoto.from = result.from_who.trim();
+              } else if (
+                typeof result.from === "string" &&
+                result.from.trim().length > 0
+              ) {
+                that.yui$Hitokoto.from = result.from.trim();
+              }
+            });
+        }
       }
     },
     computed: {
@@ -47,6 +92,18 @@ export default (Vuex) => {
           result = Math.round(result / 100) / 10 + "k";
         }
         return result;
+      },
+      yui$SitePosts() {
+        return this.$site.pages
+          .filter((p) => p.id === "archive")
+          .sort((a, b) => {
+            if (a.frontmatter.date < b.frontmatter.date) {
+              return 1;
+            } else if (a.frontmatter.date > b.frontmatter.date) {
+              return -1;
+            }
+            return 0;
+          });
       }
     }
   };

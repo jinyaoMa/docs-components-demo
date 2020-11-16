@@ -1,12 +1,20 @@
 <template>
-  <div class="Layout"></div>
+  <div class="Layout">
+    <Title></Title>
+    <Article></Article>
+  </div>
 </template>
 
 <script>
+import Title from "../components/Title";
+import Article from "../components/Article";
+
 export default {
   name: "Layout",
-  components: {},
-  computed: {},
+  components: {
+    Title,
+    Article,
+  },
 };
 </script>
 

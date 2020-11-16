@@ -41,7 +41,6 @@ Alt-H2
 ##### H5
 ###### H6
 
-
 Alternatively, for H1 and H2, an underline-ish style:
 
 Alt-H1
@@ -49,7 +48,6 @@ Alt-H1
 
 Alt-H2
 ------
-
 
 ## Emphasis
 
@@ -70,7 +68,6 @@ Strong emphasis, aka bold, with **asterisks** or __underscores__.
 Combined emphasis with **asterisks and _underscores_**.
 
 Strikethrough uses two tildes. ~~Scratch this.~~
-
 
 ## Lists
 
@@ -130,7 +127,6 @@ And more text.
 
 <p>To reboot your computer, press <kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>del</kbd>.</p>
 
-
 ```markdown
 <dl>
     <dt>Definition list</dt>
@@ -141,7 +137,6 @@ And more text.
 </dl>
 ```
 
-
 <dl>
     <dt>Definition list</dt>
     <dd>Is something people use sometimes.</dd>
@@ -149,7 +144,6 @@ And more text.
     <dt>Markdown in HTML</dt>
     <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
-
 
 ## Links
 
@@ -221,7 +215,6 @@ Reference-style:
 
 Inline `code` has `back-ticks around` it.
 
-
 ```javascript
 var s = "JavaScript syntax highlighting";
 alert(s);
@@ -252,9 +245,6 @@ But let's throw in a <b>tag</b>.
 | Single backticks | `'Isn't this fun?'`             | 'Isn't this fun?'             |
 | Quotes           | `"Isn't this fun?"`             | "Isn't this fun?"             |
 | Dashes           | `-- is en-dash, --- is em-dash` | -- is en-dash, --- is em-dash |
-
-
-
 
 Colons can be used to align columns.
 
@@ -337,7 +327,6 @@ ___
 
 Underscores
 
-
 ## Line Breaks
 
 ```markdown
@@ -349,14 +338,12 @@ This line is also a separate paragraph, but...
 This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
 ```
 
-
 Here's a line for us to start with.
 
 This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
 
 This line is also a separate paragraph, but...
 This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
-
 
 -----
 

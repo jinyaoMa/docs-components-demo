@@ -1,5 +1,5 @@
 ---
-title: 'SFWRTECH 3IT3 Lab #1 Layer 3 and 4 Protocols'
+title: SFWRTECH 3IT3 Lab #1 Layer 3 and 4 Protocols
 categories:
   - Lab
 tags:

@@ -1,5 +1,5 @@
 ---
-title: 旧版日记仿markdown编译代码
+title: 旧版日记仿 markdown 编译代码
 categories:
   - Hexo
 tags:
@@ -9,7 +9,7 @@ date: 2019-02-21 22:00:00
 updated: 2019-02-21 22:00:00
 ---
 
-旧版日记仿markdown编译代码
+旧版日记仿 markdown 编译代码
 
 <!-- more -->
 

@@ -1,11 +1,20 @@
 <template>
-  <div class="Archive"></div>
+  <div class="Archive">
+    <Title></Title>
+    <Timeline></Timeline>
+  </div>
 </template>
 
 <script>
+import Title from "../components/Title";
+import Timeline from "../components/Timeline";
+
 export default {
   name: "Archive",
-  components: {},
+  components: {
+    Title,
+    Timeline,
+  },
 };
 </script>
 

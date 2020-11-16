@@ -1,11 +1,20 @@
 <template>
-  <div class="Post"></div>
+  <div class="Post">
+    <Title></Title>
+    <Article></Article>
+  </div>
 </template>
 
 <script>
+import Title from "../components/Title";
+import Article from "../components/Article";
+
 export default {
   name: "Post",
-  components: {},
+  components: {
+    Title,
+    Article,
+  },
 };
 </script>
 

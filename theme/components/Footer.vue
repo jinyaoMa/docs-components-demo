@@ -32,10 +32,19 @@ export default {
   name: "Footer",
   computed: {
     powered() {
-      return this.yui$Locale.footer.powered.replace(
+      let result = this.yui$Locale.footer.powered.replace(
         "[:vuepress:]",
-        `<a target="_blank" href="${VUEPRESS_OFFICIAL_SITE}" title="VuePress v${__VUEPRESS__.version}">VuePress</a>`
+        `<a target="_blank" href="${VUEPRESS_OFFICIAL_SITE}" title="VuePress">VuePress</a>`
       );
+      if (typeof __VUEPRESS__ !== "undefined") {
+        result = this.yui$Locale.footer.powered.replace(
+          "[:vuepress:]",
+          `<a target="_blank" href="${VUEPRESS_OFFICIAL_SITE}" title="VuePress v${
+            __VUEPRESS__ ? __VUEPRESS__.version : "?"
+          }">VuePress</a>`
+        );
+      }
+      return result;
     },
     themed() {
       return this.yui$Locale.footer.themed

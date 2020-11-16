@@ -3,13 +3,13 @@
     <Header></Header>
     <div class="Subpage main">
       <div class="Main container container--vertical">
-        <div class="main">
+        <div class="Center main">
           <slot></slot>
         </div>
         <Footer></Footer>
       </div>
     </div>
-    <div class="Goingto container container--vertical">
+    <div class="Goingto container container--vertical" :class="{ noScroll }">
       <div class="Goingto-button" @click="goingtoTop">
         <i class="fas fa-arrow-up"></i>
       </div>
@@ -87,7 +87,7 @@ export default {
   watch: {
     $route: {
       handler() {
-        console.log();
+        if (typeof window === "undefined") return;
         const waiter = window.setInterval(() => {
           if (this.$refs.scrollbar && this.$slots.default.length) {
             this.initThumb();
@@ -182,6 +182,9 @@ export default {
 .Scrollbar-thumb--show
   opacity 1
 
+.Center
+  padding 0
+
 .Goingto
   position fixed
   right $padding
@@ -189,6 +192,12 @@ export default {
   width $avatarSize + $padding * 2
   padding $padding
   pointer-events none
+  transition transform 0.6s
+  &.noScroll
+    transform s(
+      'translateX(%s)',
+      $avatarSize + $padding * 3
+    ) !important
 
 .Goingto-button
   height $avatarSize

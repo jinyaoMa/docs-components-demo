@@ -2,19 +2,22 @@ article, aside, blockquote, body, button, code, dd, details, div, dl, dt, fields
   margin 0
   padding 0
   box-sizing border-box
-  transition background 0.6s, opacity 0.6s, filter 0.6s
+  transition background 0.6s, opacity 0.6s, filter 0.6s, box-shadow 0.2s
 
 body, html
   min-width $mobileMinWidth
   font-size $fontSize
   height 100vh
   width 100vw
+  min-width $maxMainWidth
+  overflow-y hidden
 
 body
   font-family 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'SimSun', sans-serif
   color $fontColorBlack
   background-color $fontColorBlackSecondary
   line-height 1.5
+  letter-spacing 0.1rem
 
 .container
   display flex
@@ -43,3 +46,28 @@ body
     transform rotate(0)
   100%
     transform rotate(360deg)
+
+.markdown-body
+  color $fontColorBlackSecondary
+  a
+    color $linkColorSup
+    &:before
+      display none
+  table
+    color $fontColorBlackSecondary
+    tr
+      background-color $dividerColorLight
+      &:nth-child(2n)
+        background-color $dividerColorDark
+  img
+    display block
+    + em
+      display block
+      font-size 0.75rem
+      line-height 2rem
+      padding 0 0.625rem
+      color var(--txt)
+      background $dividerColorDark
+  h1, h2, h3, h4, h5, h6
+    color $fontColorBlack
+    margin-top $padding

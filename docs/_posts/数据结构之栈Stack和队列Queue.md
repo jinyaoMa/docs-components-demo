@@ -1,5 +1,5 @@
 ---
-title: 数据结构之栈Stack和队列Queue
+title: 数据结构之栈 Stack 和队列 Queue
 categories:
   - 数据结构与算法
 tags:
@@ -13,16 +13,16 @@ updated: 2020-05-08 22:06:03
 
 <!-- more -->
 
-# 栈Stack
+# 栈 Stack
 
-栈Stack是一种线性结构，是线性表的一种具体形式。栈这种后进先出（Last In First Out，LIFO）的应用非常广泛，例如网页的前进后退功能，编辑器的后一步前一步功能，方法调用时的函数栈等等。
+栈 Stack 是一种线性结构，是线性表的一种具体形式。栈这种后进先出（Last In First Out，LIFO）的应用非常广泛，例如网页的前进后退功能，编辑器的后一步前一步功能，方法调用时的函数栈等等。
 
-栈Stack的特性：
+栈 Stack 的特性：
 - 栈的元素必须“后进先出”
 - 栈的操作只能于线性表表尾进行
 - 栈的表尾被称为栈顶（Top），栈的表头被称为栈底（bottom）
 
-栈Stack的操作：
+栈 Stack 的操作：
 - 插入操作（Push），进栈
 - 删除操作（Pop），出栈
 
@@ -188,21 +188,21 @@ for (let i = 0; i < input.length; i++) {
 // result = -0.9166666666666667
 ```
 
-# 队列Queue
+# 队列 Queue
 
-队列Queue是一种线性结构，也是线性表的一种具体形式。队列这种先进先出（First In First Out，FIFO）的应用也非常广泛，是只允许在一段进行插入操作，而在另一端进行删除操作的线性表，例如输入缓冲功能，任务顺序加载功能等等。
+队列 Queue 是一种线性结构，也是线性表的一种具体形式。队列这种先进先出（First In First Out，FIFO）的应用也非常广泛，是只允许在一段进行插入操作，而在另一端进行删除操作的线性表，例如输入缓冲功能，任务顺序加载功能等等。
 
 队列可以用顺序储存结构实现，但是跟栈相反，**队列一般都用链式储存结构**实现。
 
-队列Queue的特性：
+队列 Queue 的特性：
 - 队列的元素必须“后进先出”
 - 队列的操作只能于线性表头尾进行
 
-队列Queue的操作：
+队列 Queue 的操作：
 - 插入操作（Offer），进队列
 - 删除操作（Poll），出队列
 
 ![Queue Offer And Poll](/gallery/data-structure-queue.png)
 
 > 本文参考：
-> [【C语言描述】《数据结构和算法》（小甲鱼）](https://www.bilibili.com/video/BV1jW411K7yg)
+> [【C 语言描述】《数据结构和算法》（小甲鱼）](https://www.bilibili.com/video/BV1jW411K7yg)

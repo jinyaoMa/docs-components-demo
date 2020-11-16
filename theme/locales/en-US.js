@@ -11,5 +11,7 @@ module.exports = {
       "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
   },
 
-  archive: "Archive"
+  archive: "Archive",
+
+  yearTotal: "have [:total:] posts written this year"
 };

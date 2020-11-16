@@ -1,5 +1,5 @@
 ---
-title: Hexo主题Mustom使用指南（对应主题1.0版）
+title: Hexo 主题 Mustom 使用指南（对应主题 1.0 版）
 categories:
   - Hexo
 tags:
@@ -8,31 +8,31 @@ date: 2020-04-15 13:56:45
 updated: 2020-04-15 13:56:45
 ---
 
-- 本主题[Mustom](//github.com/jinyaoMa/hexo-theme-mustom)是我参考了卡片式和窗口展示的样式设计的Hexo主题。
-- 本主题通过大量的replaceWith函数和PJAX来加载，而且用了Live2D的插件，初始加载时回流特别厉害。
-- 本主题可以衍生一个CSS的框架，但是作者本人目前还是在给每个组件都弄一个单独的样式表。
+- 本主题 [Mustom](//github.com/jinyaoMa/hexo-theme-mustom) 是我参考了卡片式和窗口展示的样式设计的 Hexo 主题。
+- 本主题通过大量的 replaceWith 函数和 PJAX 来加载，而且用了 Live2D 的插件，初始加载时回流特别厉害。
+- 本主题可以衍生一个 CSS 的框架，但是作者本人目前还是在给每个组件都弄一个单独的样式表。
 - 本主题把各类资源文件都分门别类了，在以后添加内容方面应该还是较方便的。
 
 <!-- more -->
 
-# Hexo根目录结构
+# Hexo 根目录结构
 
-**注：主题文件可以下载[本站](//github.com/jinyaoMa/ma-jinyao.cn)所有源代码后，通过复制粘贴`themes/mustom`文件夹获得，或者下载[Mustom](//github.com/jinyaoMa/hexo-theme-mustom)所有源代码获得**
-**注：以下文件及文件夹都是使用Mustom主题必要的结构**
+**注：主题文件可以下载 [本站](//github.com/jinyaoMa/ma-jinyao.cn) 所有源代码后，通过复制粘贴`themes/mustom`文件夹获得，或者下载 [Mustom](//github.com/jinyaoMa/hexo-theme-mustom) 所有源代码获得**
+**注：以下文件及文件夹都是使用 Mustom 主题必要的结构**
 
-先来看看[本站](//github.com/jinyaoMa/ma-jinyao.cn)的根目录结构。
+先来看看 [本站](//github.com/jinyaoMa/ma-jinyao.cn) 的根目录结构。
 
 ```
 ├─scaffolds    : 模板
 ├─source       : 内容资源文件夹
 ├─themes       : 下载的主题放这里
-├─package.json : 里面可以看我都用了什么没有魔改过的Hexo插件
+├─package.json : 里面可以看我都用了什么没有魔改过的 Hexo 插件
 ├─_config.yml  : 根配置文件
 ```
 
-这就是一个普通Hexo建站的初始结构。这里主要讲下，**使用我的Mustom主题时，可以使用`scaffolds`里我的模板，里面包含了必要的front-matter变量。可以复制粘贴整个`scaffolds`文件去覆盖原本的文件夹。推荐按照[本站](//github.com/jinyaoMa/ma-jinyao.cn)里的`package.json`来安装依赖，因为基本上安装的依赖都是用于优化和兼容。可以复制粘贴本站的`package.json`去替换原本的文件，之后运行命令`npm i`安装依赖。之后所有的例子默认都使用了我的模板和依赖之后的操作。**
+这就是一个普通 Hexo 建站的初始结构。这里主要讲下，**使用我的 Mustom 主题时，可以使用`scaffolds`里我的模板，里面包含了必要的 front-matter 变量。可以复制粘贴整个`scaffolds`文件去覆盖原本的文件夹。推荐按照 [本站](//github.com/jinyaoMa/ma-jinyao.cn) 里的`package.json`来安装依赖，因为基本上安装的依赖都是用于优化和兼容。可以复制粘贴本站的`package.json`去替换原本的文件，之后运行命令`npm i`安装依赖。之后所有的例子默认都使用了我的模板和依赖之后的操作。**
 
-# _config.yml根配置文件
+# _config.yml 根配置文件
 
 **注：使用本主题的你可以在上面添加变量和修改变量的值，但是最好不要删除某一个变量，你可以留个空字符串**
 **可以在复制粘贴以下配置之后，通过网站效果慢慢改**
@@ -44,7 +44,7 @@ updated: 2020-04-15 13:56:45
 
 # Site
 title: "耀 の 个人网站 | Mark の Personal Website"
-description: "耀の个人网站, 耀的个人网站, Mark の Personal Website, Mark's Personal Website, 耀的部落阁, 耀の部落阁, jinyaoMa, Mustom, Hexo"
+description: "耀の个人网站，耀的个人网站，Mark の Personal Website, Mark's Personal Website, 耀的部落阁，耀の部落阁，jinyaoMa, Mustom, Hexo"
 author: jinyaoMa ( 耀 / Mark )
 year: 2019 # 建站年
 
@@ -55,16 +55,16 @@ root: /
 
 # Directory
 source_dir: source
-public_dir: docs # 方便使用Github Page
+public_dir: docs # 方便使用 Github Page
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
-code_dir: code # markdown使用include_code标签
+code_dir: code # markdown 使用 include_code 标签
 skip_render:
-  - "code/*.*" # 排除code_dir
-  - "extension/**/*.html" # 排除extension
-  - "*.html" # 如果在在主目录source文件夹里放了搜索引擎验证的.html文件
-  - "CNAME" # 如果在在主目录source文件夹里放了CNAME文件
+  - "code/*.*" # 排除 code_dir
+  - "extension/**/*.html" # 排除 extension
+  - "*.html" # 如果在在主目录 source 文件夹里放了搜索引擎验证的。html 文件
+  - "CNAME" # 如果在在主目录 source 文件夹里放了 CNAME 文件
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -160,7 +160,7 @@ ignore:
 baidu_url_submit:
   count: 1000 # 提交最新的一个链接
   host: ma-jinyao.cn # 在百度站长平台中注册的域名
-  token: "" # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  token: "" # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里！
   path: baidu_urls.txt # 文本文档的地址， 新链接会保存在此文本文档里
 
 baidu_translate: # 用于划词翻译组件
@@ -176,16 +176,16 @@ google_site_verification: ""
 baidu_site_verification: ""
 ```
 
-# themes/mustom目录结构
+# themes/mustom 目录结构
 
-接下来看看[themes/mustom](//github.com/jinyaoMa/ma-jinyao.cn/tree/master/themes/mustom)的目录结构。
+接下来看看 [themes/mustom](//github.com/jinyaoMa/ma-jinyao.cn/tree/master/themes/mustom) 的目录结构。
 
 ```
 ├─_config.yml : 主题配置文件，改菜单、改图标、改皮肤、改音乐/一言组件配置、新增组件时涉及
 ├─source : 主题资源文件夹
-|   ├─browser.ejs : 不用babelify时旧浏览器会重定向到这个页面
+|   ├─browser.ejs : 不用 babelify 时旧浏览器会重定向到这个页面
 |   ├─robots.txt
-|   ├─sw.tpl : pwa需要加载的service worker模板
+|   ├─sw.tpl : pwa 需要加载的 service worker 模板
 |   ├─asset
 |   |   ├─part : 所有组件模板文件放这
 |   |   |  ├─audioplayer.ejs
@@ -215,7 +215,7 @@ baidu_site_verification: ""
 |   |   |  ├─xcanvas.ejs
 |   |   |  ├─xdrawer.ejs
 |   |   |  └xsearch.ejs
-|   |   ├─live2d : Live2D的文件放这
+|   |   ├─live2d : Live2D 的文件放这
 |   |   |   ├─haruto.model.json
 |   |   |   ├─haruto.physics.json
 |   |   |   ├─mtn
@@ -236,10 +236,10 @@ baidu_site_verification: ""
 |   |   ├─lang : 所有的语言界面资源文件放这
 |   |   |  ├─en.yml : 英文
 |   |   |  └zh-cn.yml : 中文
-|   |   ├─js : 所有的JS资源文件放这
+|   |   ├─js : 所有的 JS 资源文件放这
 |   |   | ├─main.js : 管理所有资源的加载和程序
-|   |   | ├─nomodule.js : 不使用babelify时用得到的旧浏览器重定向
-|   |   | ├─plugin : 所有第三方JS插件模块
+|   |   | ├─nomodule.js : 不使用 babelify 时用得到的旧浏览器重定向
+|   |   | ├─plugin : 所有第三方 JS 插件模块
 |   |   | |   ├─APlayer.min.js
 |   |   | |   ├─av-min.js
 |   |   | |   ├─evanyou.js
@@ -277,7 +277,7 @@ baidu_site_verification: ""
 |   |   | |  ├─xcanvas.js
 |   |   | |  ├─xdrawer.js
 |   |   | |  └xsearch.js
-|   |   | ├─common : 包含所有通用JS函数
+|   |   | ├─common : 包含所有通用 JS 函数
 |   |   | |   ├─ajax.js
 |   |   | |   ├─api.js
 |   |   | |   ├─config.js
@@ -418,7 +418,7 @@ baidu_site_verification: ""
 |   |   ├─lang : 所有的语言界面资源文件放这
 |   |   |  ├─en.yml : 英文
 |   |   |  └zh-cn.yml : 中文
-|   |   ├─js : 所有的JS资源文件放这
+|   |   ├─js : 所有的 JS 资源文件放这
 |   |   | ├─main.js : 管理所有资源的加载和程序
 |   |   | ├─part : 所有组件加载必要的模块
 |   |   ├─css : 所有的样式文件放这
@@ -429,24 +429,24 @@ baidu_site_verification: ""
 |   |    └frame.ejs : 网页模板，增减改组件和修改头部模板时涉及
 ```
 
-# source目录结构
+# source 目录结构
 
-再来看看[source](//github.com/jinyaoMa/ma-jinyao.cn/tree/master/source)的目录结构。
+再来看看 [source](//github.com/jinyaoMa/ma-jinyao.cn/tree/master/source) 的目录结构。
 
 ```
-├─CNAME : 锁定github pages域名定向
+├─CNAME : 锁定 github pages 域名定向
 ├─_posts : 所有的文章
 |   ├─Gallery-Post-Not-Supported.md
 |   ├─Hello-Hexo.md
 |   ├─Helpful-Links.md
-|   ├─HTTP是什么？.md
+|   ├─HTTP 是什么？.md
 |   ├─Markdown-Basic-Syntax.md
 |   ├─Oracle-SQL-Basic-Usage.md
-|   ├─TCP-IP是什么？.md
-|   ├─主题hexo-theme-mustom使用指南.md
-|   ├─旧版日记仿markdown编译代码.md
-|   ├─测试区2048JS代码.md
-|   └网易云音乐歌单JS音乐播放器JS代码.md
+|   ├─TCP-IP 是什么？.md
+|   ├─主题 hexo-theme-mustom 使用指南。md
+|   ├─旧版日记仿 markdown 编译代码。md
+|   ├─测试区 2048JS 代码。md
+|   └网易云音乐歌单 JS 音乐播放器 JS 代码。md
 ├─resume : 这是个“简历小贴士”单页面
 |   └index.md
 ├─records : 这是个“记录”单页面
@@ -477,14 +477,14 @@ baidu_site_verification: ""
 |     ├─resume : “简历生成”扩展
 |     ├─palette : “图像颜色提取”扩展
 |     ├─letter : “求职信”扩展
-├─code : 所有使用Hexo标签“include_code”的代码文件都放这
+├─code : 所有使用 Hexo 标签“include_code”的代码文件都放这
 ├─about : 这是个“关于”单页面
 |   └index.md
 ```
 
 # 新建单页面例子
 
-**注：需要我的scaffolds/page.md模板为前提**
+**注：需要我的 scaffolds/page.md 模板为前提**
 
 假如我要新建一个“友链”单页面，我需要运行新建命令：
 
@@ -499,7 +499,7 @@ hexo new page "links"
 ├─resume
 ├─records
 ├─links : 新“友链”单页面
-|   └index.md : 模板生成的index.md
+|   └index.md : 模板生成的 index.md
 ├─library
 ├─letter
 ├─gallery
@@ -508,7 +508,7 @@ hexo new page "links"
 ├─about
 ```
 
-如何修改`links/index.md`可以参考[about/index.md](//raw.githubusercontent.com/jinyaoMa/ma-jinyao.cn/master/source/about/index.md)
+如何修改`links/index.md`可以参考 [about/index.md](//raw.githubusercontent.com/jinyaoMa/ma-jinyao.cn/master/source/about/index.md)
 
 ## 添加菜单项目
 
@@ -535,9 +535,9 @@ menus:
 
 ``` yml
 menus:
-  main: # 对应_config.yml中的项目组
+  main: # 对应_config.yml 中的项目组
     caption: 本站 # 项目组名称
-    items: # 对应_config.yml中的项目
+    items: # 对应_config.yml 中的项目
       home: 首页 # 项目名称
       archive: 归档 # 项目名称
       about: 关于 # 项目名称
@@ -546,19 +546,19 @@ menus:
 
 # 新建文章例子
 
-**注：需要我的scaffolds/post.md模板为前提**
+**注：需要我的 scaffolds/post.md 模板为前提**
 
-假如我要新建一个“HTTP是什么？”文章，我需要运行新建命令：
+假如我要新建一个“HTTP 是什么？”文章，我需要运行新建命令：
 
 ``` bash
-hexo new "HTTP是什么？"
+hexo new "HTTP 是什么？"
 ```
 
 运行命令后得到以下新目录结构
 
 ```
 ├─_posts
-|   └HTTP是什么？.md : 新“HTTP是什么？”文章
+|   └HTTP 是什么？.md : 新“HTTP 是什么？”文章
 ├─resume
 ├─records
 ├─links
@@ -570,11 +570,11 @@ hexo new "HTTP是什么？"
 ├─about
 ```
 
-打开`HTTP是什么？.md`，可以看到front-matter中没有abbrlink，没有关系，这是自动生成。**如果文章里使用了MathJax，需要设置`mathjax: true`。**
+打开`HTTP 是什么？.md`，可以看到 front-matter 中没有 abbrlink，没有关系，这是自动生成。**如果文章里使用了 MathJax，需要设置`mathjax: true`。**
 
 ``` yml
 ---
-title: HTTP是什么？
+title: HTTP 是什么？
 categories:
   - - null # 分类设置
 tags:
@@ -589,7 +589,7 @@ updated: 2020-04-10 14:15:34
 
 假如我要在“友链”单页面里添加一个像"记录"单页面下的记录组件，命名为`links`组件：
 
-**首先，在Hexo根目录下`source/links`文件夹建立一个`content.yml`用以记录友链，里面的内容可以是这样的：**
+**首先，在 Hexo 根目录下`source/links`文件夹建立一个`content.yml`用以记录友链，里面的内容可以是这样的：**
 
 ``` yml source/links/content.yml
 # 友链模板
@@ -601,7 +601,7 @@ updated: 2020-04-10 14:15:34
   site: //baidu.com
   avatar: ""
 
-# ...以此类推
+# ... 以此类推
 ```
 
 **然后，在主题目录`themes/mustom`新建和修改以下必要的文件：**
@@ -617,19 +617,19 @@ updated: 2020-04-10 14:15:34
 |   |   |  └zh-cn.yml : 添加需要的中文文本
 |   |   ├─js
 |   |   | ├─part
-|   |   | |  └links.js : 必要“JS加载模块”
+|   |   | |  └links.js : 必要“JS 加载模块”
 |   |   ├─css
 |   |   |  ├─_part
 |   |   |  |   └links.styl : 必要“组件样式”
 ```
 
-`links.ejs`：可以参照[asset/part/records.ejs](//raw.githubusercontent.com/jinyaoMa/ma-jinyao.cn/master/themes/mustom/source/asset/part/records.ejs)组件模板，刚开始可以只有以下部分：
+`links.ejs`：可以参照 [asset/part/records.ejs](//raw.githubusercontent.com/jinyaoMa/ma-jinyao.cn/master/themes/mustom/source/asset/part/records.ejs) 组件模板，刚开始可以只有以下部分：
 
 ``` html asset/part/links.ejs
 <div class="p-links"><!-- 注意类名 -->
   <div class="p-links-caption"><!-- 窗口标题部分 -->
     <%- theme.links.icon %><!-- 窗口标题图标 -->
-    <span data-lang="links.caption"><!-- 加载语言文件中links.caption的字符串 --></span>
+    <span data-lang="links.caption"><!-- 加载语言文件中 links.caption 的字符串 --></span>
   </div>
 <div>
 ```
@@ -653,7 +653,7 @@ links:
   caption: 友链
 ```
 
-`links.js`：可以参照[asset/js/part/records.js](//raw.githubusercontent.com/jinyaoMa/ma-jinyao.cn/master/themes/mustom/source/asset/js/part/records.js)加载模块，刚开始可以只有以下部分：
+`links.js`：可以参照 [asset/js/part/records.js](//raw.githubusercontent.com/jinyaoMa/ma-jinyao.cn/master/themes/mustom/source/asset/js/part/records.js) 加载模块，刚开始可以只有以下部分：
 
 ``` js asset/js/part/links.js
 import part from "../common/part.js";
@@ -672,11 +672,11 @@ export default {
 };
 ```
 
-`links.styl`：可以参照[asset/css/_part/records.styl](//raw.githubusercontent.com/jinyaoMa/ma-jinyao.cn/master/themes/mustom/source/asset/css/_part/records.styl)组件样式，刚开始可以什么样式都没有。
+`links.styl`：可以参照 [asset/css/_part/records.styl](//raw.githubusercontent.com/jinyaoMa/ma-jinyao.cn/master/themes/mustom/source/asset/css/_part/records.styl) 组件样式，刚开始可以什么样式都没有。
 
 **完成必要文件的新建之后，就要把这个组件加载到页面上，需要修改一下文件：**
 
-在Hexo根目录`source/links/index.md`里面的front-matter中标记这个组件。
+在 Hexo 根目录`source/links/index.md`里面的 front-matter 中标记这个组件。
 
 ``` yml source/links/index.md
 ---
@@ -699,14 +699,14 @@ parts:
 在`themes/mustom`主题目录中`source/asset/js/main.js`对号插入以下代码：
 
 ``` js
-// 头部所有import下面
+// 头部所有 import 下面
 import links from './part/links.js';
 
 /* Ctrl+F 查找 “Extra Operations”，在“Extra Operations”下添加代码加载组件到“links”单页面 */
 // Extra Operations
 if (/^\/(links)\//.test(pathname())) {
   ajax({
-    url: `/links/content.json`, // content.yml 预编译成的JSON文件，友链的记录文件
+    url: `/links/content.json`, // content.yml 预编译成的 JSON 文件，友链的记录文件
     method: 'get',
     dataType: 'json',
     success(data) {
@@ -727,7 +727,7 @@ if (/^\/(links)\//.test(pathname())) {
 
 # 删除单页面组件
 
-想要停用某个单页面组件只要在单页面所属`source/YourPage/index.md`里面的front-matter中注释掉组件标记即可，例如：
+想要停用某个单页面组件只要在单页面所属`source/YourPage/index.md`里面的 front-matter 中注释掉组件标记即可，例如：
 
 ``` yml
 ---
@@ -740,4 +740,4 @@ parts:
 ---
 ```
 
-**_我这个主题所用技术都是比较野生和混杂，不懂可以Github Issue我，也可以百度。自己研究一下熟悉之后就简单了，因为来来去去也就几个地方，只是代码分得较细，改动过程鼠标可能比较累。_**
+**_我这个主题所用技术都是比较野生和混杂，不懂可以 Github Issue 我，也可以百度。自己研究一下熟悉之后就简单了，因为来来去去也就几个地方，只是代码分得较细，改动过程鼠标可能比较累。_**

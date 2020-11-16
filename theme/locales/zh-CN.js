@@ -10,5 +10,7 @@ module.exports = {
     license: "知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议"
   },
 
-  archive: "归档"
+  archive: "归档",
+
+  yearTotal: "共写有 [:total:] 篇文章"
 };

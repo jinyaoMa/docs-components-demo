@@ -1,8 +1,8 @@
 ---
-title: 网易云音乐歌单JS音乐播放器JS代码
+title: 网易云音乐歌单 JS 音乐播放器 JS 代码
 categories:
-  - Blog
-  - Plugin
+  - - Blog
+    - Plugin
 tags:
   - 音乐播放器
   - JavaScript
@@ -10,13 +10,13 @@ date: 2019-01-17 18:09:00
 updated: 2019-01-17 18:09:00
 ---
 
-![JS音乐播放器截图](/gallery/yaoplayer-0.jpg)
+![JS 音乐播放器截图](/gallery/yaoplayer-0.jpg)
 
-网易云音乐歌单JS音乐播放器JS代码
+网易云音乐歌单 JS 音乐播放器 JS 代码
 
-感谢[MessAPI](//github.com/messoer/mess-api-doc)提供的网易云音乐API
+感谢 [MessAPI](//github.com/messoer/mess-api-doc) 提供的网易云音乐 API
 
-代码依赖jQuery和fontawesome
+代码依赖 jQuery 和 fontawesome
 
 <!-- more -->
 
@@ -24,7 +24,7 @@ updated: 2019-01-17 18:09:00
 
 ``` JavaScript
 $.get('https://v1.itooi.cn/netease/songList', {
-	'id': 998389130 // 此处歌单ID
+	'id': 998389130 // 此处歌单 ID
 }, function(json){
 	if (json.data != undefined && json.data != null &&
 		json.data.tracks != undefined && json.data.tracks != null) {

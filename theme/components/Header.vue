@@ -120,6 +120,7 @@ export default {
   height $avatarSize + $padding * 2
   position sticky
   top 0
+  z-index 1
 
 .Content
   flex-direction row-reverse
@@ -162,15 +163,15 @@ export default {
 >>> .Search
   $searchWidth = $minPageWidth - $sideWidth - $padding * 4
   input
-    width $searchWidth * 0.25
+    width $avatarSize
     height $avatarSize
     padding-left s(
       'calc(%s - 0.5rem)',
       @height
     )
-    padding-right $avatarSize * 0.25
+    padding-right 0.5rem
     border-radius $avatarSize * 0.5
-    background-color $backgroundTransparentLightSecondary
+    background-color $fontColorWhite
     background-position s(
       'calc(%s - 0.5rem)',
       $avatarSize * 0.5
@@ -179,14 +180,19 @@ export default {
       $avatarSize * 0.5
     )
     border-width 0
+    box-shadow 0 0 $gap 1px darken($borderColor, 10%)
     &:focus
       width $searchWidth * 0.5
-      background-color $fontColorWhite
-      box-shadow 0 0 0 1px darken($borderColor, 10%)
+      padding-right s(
+        'calc(%s - 0.5rem)',
+        $avatarSize * 0.5
+      )
   .suggestions
     width $searchWidth
-    top $avatarSize + $gap
+    top $avatarSize + $padding
     left 0
+    border-width 0
+    box-shadow 0 0 $gap darken($borderColor, 10%)
   a
     text-decoration none
 </style>

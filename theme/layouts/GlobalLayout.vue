@@ -21,9 +21,6 @@ export default {
     Drawer,
     Content,
   },
-  mounted() {
-    console.log(this);
-  },
   computed: {
     layout() {
       if (this.$page.path) {

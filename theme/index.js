@@ -1,5 +1,32 @@
+const combineThemeConfig = (themeConfig, object) => {
+  for (const key in object) {
+    if (object[key] instanceof Array) {
+      if (!themeConfig.hasOwnProperty(key)) {
+        themeConfig[key] = [];
+      }
+      themeConfig[key] = themeConfig[key].concat(object[key]);
+    } else if (typeof object[key] === "object") {
+      if (!themeConfig.hasOwnProperty(key)) {
+        themeConfig[key] = {};
+      }
+      combineThemeConfig(themeConfig[key], object[key]);
+    } else {
+      if (!themeConfig.hasOwnProperty(key)) {
+        themeConfig[key] = object[key];
+      }
+    }
+  }
+};
+
 module.exports = (themeConfig, context) => {
   const name = "vuepress-theme-yao-ui";
+
+  combineThemeConfig(themeConfig, {
+    hitokoto: {
+      api: "//v1.hitokoto.cn",
+      type: "l" // https://developer.hitokoto.cn/sentence/#请求参数
+    }
+  });
 
   const zhCN = require("./locales/zh-CN");
   const enUS = require("./locales/en-US");
@@ -21,13 +48,7 @@ module.exports = (themeConfig, context) => {
               title_en: enUS.archive
             },
             itemLayout: "Post",
-            itemPermalink: "/:year/:month/:day/:slug",
-            pagination: {
-              prevText: "Older",
-              nextText: "Newer",
-              lengthPerPage: 9,
-              layout: "Pagination"
-            }
+            itemPermalink: "/archive/:slug"
           }
         ],
         frontmatters: [
@@ -47,21 +68,7 @@ module.exports = (themeConfig, context) => {
             layout: "Tag",
             scopeLayout: "Archive"
           }
-        ],
-        sitemap: {
-          hostname: themeConfig.domain || "https://ma-jinyao.cn",
-          dateFormatter:
-            themeConfig.dateFormatter ||
-            ((time) => new Date(time).toISOString())
-        },
-        comment:
-          themeConfig.comment /* { // https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#comment
-          service: 'vssue',
-          owner: 'You',
-          repo: 'Your repo',
-          clientId: 'Your clientId',
-          clientSecret: 'Your clientSecret',
-        }*/
+        ]
       }
     ],
     [
@@ -94,6 +101,18 @@ module.exports = (themeConfig, context) => {
       {
         searchMaxSuggestions: 9
       }
+    ],
+    [
+      // https://vuepress.vuejs.org/plugin/official/plugin-nprogress.html#install
+      "@vuepress/nprogress"
+    ],
+    [
+      // https://github.com/tolking/vuepress-plugin-img-lazy
+      "vuepress-plugin-img-lazy"
+    ],
+    [
+      // https://vuepress.github.io/zh/plugins/mathjax/
+      "vuepress-plugin-mathjax"
     ]
   ];
 
@@ -130,6 +149,13 @@ module.exports = (themeConfig, context) => {
   const extendPageData = ($page) => {
     const markdown_content = $page._strippedContent;
 
+    // pangu
+    if (markdown_content) {
+      const pangunode = require("./scripts/pangunode");
+      $page.frontmatter.title = $page.title = pangunode($page.title || "");
+      $page.excerpt = pangunode($page.excerpt || "");
+    }
+
     // word count
     if (markdown_content) {
       const zh = (markdown_content.match(/[\u4E00-\u9FA5]/g) || []).length;
@@ -140,12 +166,9 @@ module.exports = (themeConfig, context) => {
             /[a-zA-Z0-9_\u0392-\u03c9\u0400-\u04FF]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af\u0400-\u04FF]+|[\u00E4\u00C4\u00E5\u00C5\u00F6\u00D6]+|\w+/g
           ) || []
       ).length;
-      const min2read = zh / 150 + en / 100;
       $page.frontmatter.wordcount = zh + en;
-      $page.frontmatter.min2read = min2read < 1 ? "1" : parseInt(min2read, 10);
     } else {
       $page.frontmatter.wordcount = 0;
-      $page.frontmatter.min2read = 0;
     }
   };
 
