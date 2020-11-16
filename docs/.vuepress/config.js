@@ -85,7 +85,7 @@ module.exports = {
     ],
     music: `https://api.i-meto.com/meting/api?server=netease&type=playlist&id=4989572738&r=${Math.random()}`,
     copyright: `© 2018 - ${new Date().getFullYear()} jinyaoMa`,
-    domain: "https://ma-jinyao.cn", // for sitemap generate
+    domain: "https://i.ma-jinyao.cn", // for sitemap generate
     dateFormatter: (time) => {
       // for sitemap dateFormatter used
       const regexAM = /├\w\d\d: AM┤/;
