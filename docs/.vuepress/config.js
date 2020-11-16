@@ -14,7 +14,7 @@ module.exports = {
     backgrounds: [
       // "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596065328389&di=ad7a9cc49e45547721005bd528325f0d&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2%2F58b4ef69ed377.jpg",
       // "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596063652971&di=8b659ee5cd46f4006d082b626eb3bd0d&imgtype=0&src=http%3A%2F%2Fpicture.ik123.com%2Fuploads%2Fallimg%2F180330%2F4-1P330160644.jpg",
-      "http://api.btstu.cn/sjbz/?lx=dongman"
+      "https://api.btstu.cn/sjbz/?lx=dongman"
     ],
     avatar: "/img/avatar.png",
     author: {
