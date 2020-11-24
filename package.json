@@ -25,7 +25,6 @@
     "vuepress": "^1.7.1",
     "vuepress-plugin-demo-block": "^0.7.2",
     "vuepress-plugin-helper-live2d": "^1.0.2",
-    "vuepress-plugin-img-lazy": "^1.0.4",
     "vuepress-plugin-mathjax": "^1.2.8",
     "vuex": "^3.5.1"
   },

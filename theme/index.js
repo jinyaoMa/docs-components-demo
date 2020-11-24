@@ -107,10 +107,6 @@ module.exports = (themeConfig, context) => {
       "@vuepress/nprogress"
     ],
     [
-      // https://github.com/tolking/vuepress-plugin-img-lazy
-      "vuepress-plugin-img-lazy"
-    ],
-    [
       // https://vuepress.github.io/zh/plugins/mathjax/
       "vuepress-plugin-mathjax"
     ]
@@ -151,9 +147,9 @@ module.exports = (themeConfig, context) => {
 
     // pangu
     if (markdown_content) {
-      const pangunode = require("./scripts/pangunode");
-      $page.frontmatter.title = $page.title = pangunode($page.title || "");
-      $page.excerpt = pangunode($page.excerpt || "");
+      const pangu = require("pangu");
+      $page.frontmatter.title = $page.title = pangu.spacing($page.title || "");
+      $page.excerpt = pangu.spacing($page.excerpt || "");
     }
 
     // word count

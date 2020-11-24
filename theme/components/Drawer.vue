@@ -21,7 +21,7 @@
               class="Menu-item"
               v-for="(item, j) in menu.items"
               :key="j"
-              :to="item.link"
+              :to="$withBase(item.link)"
               v-html="item.text[yui$Lang]"
             ></router-link>
           </div>
