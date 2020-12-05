@@ -81,8 +81,3 @@ export default {
   &.isNight
     filter brightness(50%)
 </style>
-
-<style lang="stylus">
-#live2d-widget.isNight
-  filter brightness(50%)
-</style>
