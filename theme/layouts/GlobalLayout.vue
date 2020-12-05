@@ -37,7 +37,7 @@ export default {
       return "NotFound";
     },
     customStyleBackgroundImage() {
-      let backgroundImage = "none";
+      let backgroundImage = "";
       if (
         this.$themeConfig.backgrounds &&
         this.$themeConfig.backgrounds.length

@@ -8,6 +8,9 @@
 </template>
 
 <script>
+import _h_l from "../statics/hitokoto.left.png";
+import _h_r from "../statics/hitokoto.right.png";
+
 export default {
   name: "Hitokoto",
   mounted() {
@@ -23,7 +26,9 @@ export default {
               this.$themeConfig.hitokoto.img.left
             )}')`,
           }
-        : {};
+        : {
+            backgroundImage: `url('${_h_l}')`,
+          };
     },
     afterStyle() {
       return this.$themeConfig.hitokoto &&
@@ -34,7 +39,9 @@ export default {
               this.$themeConfig.hitokoto.img.right
             )}')`,
           }
-        : {};
+        : {
+            backgroundImage: `url('${_h_r}')`,
+          };
     },
   },
 };

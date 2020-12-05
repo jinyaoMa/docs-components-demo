@@ -84,13 +84,19 @@ export default {
       onThumbMouseup: null,
     };
   },
+  computed: {
+    currentPath() {
+      return this.$route.path;
+    },
+  },
   watch: {
-    $route: {
+    currentPath: {
       handler() {
         if (typeof window === "undefined") return;
         const waiter = window.setInterval(() => {
           if (this.$refs.scrollbar && this.$slots.default.length) {
             this.initThumb();
+            console.log(this.$route);
             window.clearInterval(waiter);
           }
         }, 600);
@@ -134,11 +140,19 @@ export default {
     });
   },
   destroyed() {
-    window.removeEventListener("resize", this.onResize);
-    this.$el.removeEventListener("scroll", this.onScroll);
-    this.$refs.thumb.removeEventListener("mousedown", this.onThumbMousedown);
-    document.removeEventListener("mousemove", this.onThumbMousemove);
-    document.removeEventListener("mouseup", this.onThumbMouseup);
+    if (typeof window != "undefined") {
+      window.removeEventListener("resize", this.onResize);
+    }
+    if (typeof this.$el != "undefined") {
+      this.$el && this.$el.removeEventListener("scroll", this.onScroll);
+    }
+    if (typeof this.$refs.thumb != "undefined") {
+      this.$refs.thumb.removeEventListener("mousedown", this.onThumbMousedown);
+    }
+    if (typeof document != "undefined") {
+      document.removeEventListener("mousemove", this.onThumbMousemove);
+      document.removeEventListener("mouseup", this.onThumbMouseup);
+    }
   },
 };
 </script>

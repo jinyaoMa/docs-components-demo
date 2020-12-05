@@ -19,6 +19,11 @@
           <div class="Submenu-list">
             <router-link
               class="Menu-item"
+              :class="{
+                'exact-active':
+                  $route.path === $withBase(item.link) ||
+                  $route.path === $withBase(item.link + '/'),
+              }"
               v-for="(item, j) in menu.items"
               :key="j"
               :to="$withBase(item.link)"
@@ -26,7 +31,11 @@
             ></router-link>
           </div>
         </div>
-        <router-link v-if="!menu.items" class="Menu-item" :to="menu.link">
+        <router-link
+          v-if="!menu.items"
+          class="Menu-item"
+          :to="$withBase(menu.link)"
+        >
           <span class="Menu-item-icon" v-html="menu.icon"></span>
           <span v-html="menu.text[yui$Lang]"></span>
         </router-link>
@@ -55,14 +64,18 @@
 </template>
 
 <script>
+import _avatar from "../statics/avatar.png";
+
 export default {
   name: "Drawer",
   props: ["customStyleBackgroundImage"],
   computed: {
     customAvatarStyle() {
-      let backgroundImage = "none";
+      let backgroundImage = "";
       if (typeof this.$themeConfig.avatar === "string") {
-        const avatar = this.$withBase(this.$themeConfig.avatar);
+        const avatar = this.$themeConfig.avatar
+          ? this.$withBase(this.$themeConfig.avatar)
+          : _avatar;
         backgroundImage = `url('${avatar}')`;
       }
       return {
@@ -138,11 +151,19 @@ export default {
     });
   },
   destroyed() {
-    window.removeEventListener("resize", this.onResize);
-    this.$el.removeEventListener("scroll", this.onScroll);
-    this.$refs.thumb.removeEventListener("mousedown", this.onThumbMousedown);
-    document.removeEventListener("mousemove", this.onThumbMousemove);
-    document.removeEventListener("mouseup", this.onThumbMouseup);
+    if (typeof window != "undefined") {
+      window.removeEventListener("resize", this.onResize);
+    }
+    if (typeof this.$el != "undefined") {
+      this.$el && this.$el.removeEventListener("scroll", this.onScroll);
+    }
+    if (typeof this.$refs.thumb != "undefined") {
+      this.$refs.thumb.removeEventListener("mousedown", this.onThumbMousedown);
+    }
+    if (typeof document != "undefined") {
+      document.removeEventListener("mousemove", this.onThumbMousemove);
+      document.removeEventListener("mouseup", this.onThumbMouseup);
+    }
   },
 };
 </script>
@@ -266,7 +287,7 @@ export default {
     width 0
     transition width 0.6s
     background-color $backgroundTransparentLight
-  &.router-link-exact-active
+  &.exact-active
     background-color $backgroundTransparentDark
     padding-right $padding * 2 + $gap * 2
     &:after

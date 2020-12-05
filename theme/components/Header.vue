@@ -34,7 +34,7 @@ export default {
     return {
       playlist: [],
       audio: null,
-      cover: "none",
+      cover: "",
       isPlayed: false,
       currentIndex: 0,
     };
@@ -80,7 +80,7 @@ export default {
     },
     audioSrc() {
       this.audio.src = this.playlist[this.currentIndex].url || "";
-      this.cover = this.playlist[this.currentIndex].pic || "none";
+      this.cover = this.playlist[this.currentIndex].pic || "";
     },
     audioNext() {
       this.currentIndex += 1;
