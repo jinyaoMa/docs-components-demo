@@ -42,12 +42,14 @@
       </div>
     </div>
     <div class="Drawer-switches container" :style="customStyleBackgroundImage">
-      <div class="Drawer-switch" @click="yui$SwapLang">
-        <span>{{ /^(zh)/i.test(yui$Lang) ? "中" : "A" }}</span>
-      </div>
       <div class="Drawer-switch" @click="yui$Nightshift">
-        <i v-if="yui$IsNight" class="fas fa-sun"></i>
-        <i v-if="!yui$IsNight" class="fas fa-moon"></i>
+        <i v-if="yui$IsNight" class="fas fa-moon"></i>
+        <i v-if="!yui$IsNight" class="fas fa-sun"></i>
+      </div>
+      <div class="Drawer-switch" @click="yui$SwapLang">
+        <span :style="{ fontSize: /^(zh)/i.test(yui$Lang) ? '1em' : '1.2em' }">
+          {{ /^(zh)/i.test(yui$Lang) ? "中" : "A" }}
+        </span>
       </div>
     </div>
     <div class="Scrollbar" ref="scrollbar" :class="{ noScroll }">

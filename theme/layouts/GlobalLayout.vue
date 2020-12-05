@@ -22,21 +22,28 @@ export default {
     Content,
   },
   watch: {
-    yui$IsNight: {
+    isLive2dNight: {
       handler(flag) {
-        const live2d = document.querySelector("#live2d-widget");
-        if (live2d) {
-          if (flag) {
-            live2d.classList.add("isNight");
-          } else {
-            live2d.classList.remove("isNight");
+        if (typeof window === "undefined") return;
+        const waiter = window.setInterval(() => {
+          const live2d = document.querySelector("#live2d-widget");
+          if (live2d) {
+            if (flag) {
+              live2d.classList.add("isNight");
+            } else {
+              live2d.classList.remove("isNight");
+            }
+            window.clearInterval(waiter);
           }
-        }
+        }, 60);
       },
       immediate: true,
     },
   },
   computed: {
+    isLive2dNight() {
+      return this.yui$IsNight;
+    },
     layout() {
       if (this.$page.path) {
         const layout = this.$frontmatter.layout;
