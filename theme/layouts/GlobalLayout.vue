@@ -21,6 +21,21 @@ export default {
     Drawer,
     Content,
   },
+  watch: {
+    yui$IsNight: {
+      handler(flag) {
+        const live2d = document.querySelector("#live2d-widget");
+        if (live2d) {
+          if (flag) {
+            live2d.classList.add("isNight");
+          } else {
+            live2d.classList.remove("isNight");
+          }
+        }
+      },
+      immediate: true,
+    },
+  },
   computed: {
     layout() {
       if (this.$page.path) {
@@ -65,4 +80,9 @@ export default {
   user-select none
   &.isNight
     filter brightness(50%)
+</style>
+
+<style lang="stylus">
+#live2d-widget.isNight
+  filter brightness(50%)
 </style>
